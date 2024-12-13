@@ -1,0 +1,35 @@
+<div class="chatbot-body">
+  <div class="chatbot-container">
+    <!-- Title -->
+    <h1 class="chatbot-title">How can I help you?</h1>
+
+    <!-- Chat Area -->
+    <div class="chat-area">
+      <div *ngFor="let msg of messages" class="message" [class.user]="msg.isUser">
+        <span>{{ msg.text }}</span>
+      </div>
+    </div>
+
+    <!-- Input and Upload Section -->
+    <div class="input-area">
+      <!-- Combined Upload + Text Input -->
+      <div class="input-with-upload">
+        <label class="file-upload">
+          <i class="fa fa-paperclip"></i>
+          <input type="file" (change)="onFileUpload($event)" />
+        </label>
+        <input
+          type="text"
+          [(ngModel)]="userMessage"
+          placeholder="Ask me anything..."
+          class="message-input"
+        />
+      </div>
+
+      <!-- Send Button -->
+      <button (click)="sendMessage()" class="send-button">
+        <i class="fa fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>
